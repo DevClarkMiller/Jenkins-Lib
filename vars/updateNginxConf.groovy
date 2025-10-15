@@ -3,4 +3,5 @@ def call(String user, String serverDomain, String siteName, String confName = "n
     sh "ssh ${user}@${serverDomain} 'touch ${path}'"
     sh "scp ./${confName} ${user}@${serverDomain}:${path}"
     sh "ssh ${user}@${serverDomain} 'ln -sf ${path} /etc/nginx/sites-enabled'"
+    sh "ssh ${user}@${serverDomain} 'sudo systemctl reload nginx.service'"
 }
