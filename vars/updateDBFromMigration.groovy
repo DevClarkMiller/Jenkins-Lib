@@ -1,4 +1,4 @@
-def call(String projectName, String context, String dotnetVersion, String efVersion) {
+def call(String projectName, String context, String dotnetVersion, String efVersion, String env) {
 	sh """
 	docker run --rm \
 	-v "\$WORKSPACE:/workspace" \
@@ -9,6 +9,6 @@ def call(String projectName, String context, String dotnetVersion, String efVers
 			dotnet ef database update \
 			-s ./services/${projectName}/${projectName}.api \
 			-p ./services/${projectName}/${projectName}.data \
-			-c ${context} -- --environment Development"
+			-c ${context} -- --environment ${env}"
 	"""
 }
