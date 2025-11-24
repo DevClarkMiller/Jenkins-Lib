@@ -1,4 +1,6 @@
 def call(String imageName, String command) {
-	echo command
-    sh "docker run --rm -v '${PWD}:/workspace' -w /workspace ${imageName} bash -c "${command.replaceAll('\\$', '\\\\\\$')}" """
+	def cmd = command.collect { "\"${it}\"" }.join(" ")
+    sh """
+        docker run --rm -v "\$WORKSPACE:/workspace" -w /workspace ${image} bash -c ${cmd}
+    """
 }
