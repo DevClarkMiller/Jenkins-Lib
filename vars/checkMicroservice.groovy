@@ -5,7 +5,6 @@ def call(String microserviceFolder) {
     ).trim()
 
     if (!changes) {
-        echo "No changes in ${microserviceFolder}, skipping build"
         currentBuild.result = 'SUCCESS'
         return false // Indicates nothing changed
     }
