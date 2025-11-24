@@ -1,4 +1,5 @@
 def call(String projectName, String context, String dotnetVersion, String efVersion) {
+	sh "ls"
 	sh """
 	docker run --rm \
 	-v "\$WORKSPACE:/workspace" \
