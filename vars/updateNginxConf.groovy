@@ -1,6 +1,6 @@
 def call(String user, String serverDomain, String siteName, String confName = "nginx.conf", Boolean doRedirect = true) {
     String path = "/etc/nginx/sites-available/${siteName}"
-    String redirectFlag = doRedirect ? "--redirect" : ""
+    String redirectFlag = doRedirect ? "" : "--no-redirect"
 
     sh """
         ssh ${user}@${serverDomain} 'touch ${path}'
